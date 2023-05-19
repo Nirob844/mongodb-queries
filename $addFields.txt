@@ -1,0 +1,21 @@
+db.practice.aggregate([
+    {
+        $addFields: {
+            salary: {
+                $toInt: {
+                    $multiply: [{
+                        $rand: {}
+                    }, 10000]
+                }
+            }
+        }
+    },
+    {
+        $project: {
+            salary: 1
+        }
+    },
+    {
+        $merge: 'practice'
+    }
+])

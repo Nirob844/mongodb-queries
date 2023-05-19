@@ -1,0 +1,56 @@
+db.practice.aggregate([
+    {
+        $match: {
+            age:{
+                $gt: 18
+            }
+        }
+    },
+    {
+        $group: {
+            _id: '$age',
+            person: {
+                $sum: 1
+            }
+        }
+    },
+    {
+        $project: {
+            _id:0,
+            age:'$_id',
+            person:1
+        }
+    },
+    {
+        $sort: {
+            _id: 1
+        }
+    },
+    {
+        $limit: 5
+    }
+])
+
+
+
+
+// aggregati operator
+db.practice.aggregate([
+  {
+    $group: {
+      _id: null,
+      total: { $sum: '$salary' },
+      maxSalary: { $max: "$salary" },
+      minSalary: { $min: "$salary" },
+      avgSalary: { $avg: "$salary" }
+    }
+  },
+  {
+    $project: {
+      total: 1,
+      maxSalary: 1,
+      minSalary: 1,
+      salaryRange: { $subtract: ["$maxSalary", "$minSalary"] }
+    }
+  }
+])
