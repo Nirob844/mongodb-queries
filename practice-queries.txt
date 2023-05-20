@@ -1,0 +1,42 @@
+//task 1 ->
+// db.newUsers.find({
+//     "address.city":{ $eq: "New York" }
+// }) 
+//task 2 ->
+// db.newUsers.find({
+//   email: "johndoe@example.com" }, { "favorites.movie": 1
+// })
+//task 3 ->
+// db.newUsers.find({ "favorites.food": "pizza" }).sort({ age: 1 })
+//task 4 ->
+// db.newUsers.find({
+//     age: { $gt: 30 }, "favorites.color": "green"
+// })
+//task 5 ->
+//db.newUsers.count({"favorites.movie":'The Shawshank Redemption'})
+//task 6 ->
+//db.newUsers.updateOne({ email: "johndoe@example.com" }, { $set: { "address.zipcode": "10002" } })
+//task 7 ->
+//db.newUserssers.deleteOne({ email: "alicewilliams@example.com" })
+// task 8 ->
+// db.newUsers.aggregate([
+//   {
+//     $group: {
+//       _id: "$favorites.movie",
+//       averageAge: { $avg: "$age" }
+//     }
+//   }
+// ])
+// task 9 ->
+// db.newUsers.aggregate([
+//   {
+//     $match: { "favorites.food": "pizza" }
+//   },
+//   {
+//     $group: {
+//       _id: null,
+//       averageAge: { $avg: "$age" }
+//     }
+//   }
+// ])
+
